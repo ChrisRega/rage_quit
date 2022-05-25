@@ -1,3 +1,22 @@
+#![crate_name = "rage_quit"]
+//! # Printing flipping tables and catching tables before panic / catch_unwind
+//! This crate allows to use the macros `rage_quit` and `catch_table`
+//! Example for panic:
+//! ```no_run
+//! use rage_quit::rage_quit;
+//! rage_quit!("Use me instead of panic!");
+//! ```
+//!
+//! Example for catching a panic:
+//! ```no_run
+//! use rage_quit::{catch_table, rage_quit};
+//! assert!(catch_table!(|| {
+//!             rage_quit!("Le wild rage quit appeared!");
+//!         })
+//!         .is_err());
+//! ```
+//!
+
 #[macro_export]
 macro_rules! rage_quit {
     ( $x:expr ) => {
